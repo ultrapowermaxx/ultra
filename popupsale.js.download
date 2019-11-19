@@ -1,0 +1,40 @@
+function createPhrase() {
+  var plans = ["10", "7", "5"]
+  var randon_number = Math.random()
+  var int_number
+  if(randon_number < 0.1){
+    int_number = 2
+  }else if(randon_number > 0.1 && randon_number < 0.5){
+    int_number = 1
+  }else{
+    int_number = 0
+  }
+  var hour = Math.floor((Math.random() * 3) + 1 ).toString();
+  var int = Math.floor(Math.random() * 74);
+  var nomesArray =  ["Helena", "Alice", "Laura", "Sophia","Luiza","Júlia","Lorena","Lívia","Cecília","Eloá","Maria","Lara","Beatriz","Júlia","Isadora","Melissa","Esther","Lavínia","Maitê","Cecília","Alice","Sarah","Elisa","Liz","Yasmin","Alícia","Clara","Isis","Rebeca","Rafaela","Marina","Laura","Agatha","Miguel","Arthur","Heitor","Davi","Théo","Lorenzo","Gabriel","Pedro","Matheus","Lucas","Joaquim","Samuel","Rafael","Guilherme","Enzo","Murilo","Benício","Gustavo","Isaac","João","Lucca","Gabriel","Pedro", "Felipe","Pietro","Daniel","Bryan","Davi", "Lucca","Vicente","Eduardo","Gael","Antônio","Vitor","Noah","Caio","João","Emanuel","Cauã","Calebe","Enrico","Bento"];
+  return "<b>"+ nomesArray[int] +" comprou!</b><br>Adquiriu " + plans[int_number] + " potes ! " + "<small>"+ hour +" hora atrás</small>";
+}
+
+$(document).ready(function(){
+  showPopup();
+  closePopup();
+  setInterval(function(){
+    showPopup();
+    closePopup()
+  }, 30 * 1000);
+  $(".custom-close").click(function() {
+    $(".custom-social-proof").hide("slow"); 
+  });
+})
+
+
+function closePopup() {
+  setTimeout(function() {
+    $(".custom-social-proof").hide("slow"); 
+  }, 10000)
+}
+
+function showPopup() {
+  $("#popup").html(createPhrase());
+  $(".custom-social-proof").show("slow"); 
+}
